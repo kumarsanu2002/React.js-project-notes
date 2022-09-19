@@ -5,3 +5,5 @@ WEB CHAT APP USING REACT.JS AND REDUX.
      2--->delete unnessary folder from file like:-app.test , logo svg ,setup
      3--->clear all header code of app.js and clear code of app.css.
      4--->delete all features section code file except counterslice.js.
+       
+    
