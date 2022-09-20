@@ -29,4 +29,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   *IF THERE IF INPUT DIV AND IT HAD CLASS CALL "SIDEBAR-INPUT" AND IF WE WANT TO MAKE CSS CHANGE TO INNER OF INPUT THE WE UES:
          [ .sidebar-input > input] --> there > means inside input .
+         
+   * IF SMALL IS CLASS/DIV  INSIDE SIDEBARCHAT AND WE WANT TO MODIFY CSS OF SMALL THEN  WE WILL USE THIS :-
+                    [ SidebarChat_info > small  ]
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
