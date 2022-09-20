@@ -14,4 +14,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
        
        *STEPS OF CREATING APP SECTION:
               1--created sidebar and chat part of js with their css.And then imported them in app.js.
-              2--
+              2-- SIDEBAR:-
+                       --sidebar_header
+                       --sidebar_chats(no of user or group)
+              3--CHAT PART:-
