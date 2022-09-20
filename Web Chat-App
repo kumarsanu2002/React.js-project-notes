@@ -9,8 +9,9 @@ WEB CHAT APP USING REACT.JS AND REDUX.
     
      *TO COMMENT YOU HAVE TO USE THIS:-  {/*  */}
      *USE REACT SNIPET USING(rfce) YOU HAVE TO INSTALL EXTENSION FOR THAT.
-      
-       -------------->upto 26.21 min completed so far.
+     *INSTALL MATERIAL UI AND THEN MATERIAL ICON FROM WEBSITE.
+    
+   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
        
        *STEPS OF CREATING APP SECTION:
               1--created sidebar and chat part of js with their css.And then imported them in app.js.
@@ -18,3 +19,14 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                        --sidebar_header
                        --sidebar_chats(no of user or group)
               3--CHAT PART:-
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*TO MAKE ICON A BUTTON WE JUST DO THIS:- put particular icon between following tags
+   <IconButton>
+          <searchicon>
+   </IconButton>
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  *IF THERE IF INPUT DIV AND IT HAD CLASS CALL "SIDEBAR-INPUT" AND IF WE WANT TO MAKE CSS CHANGE TO INNER OF INPUT THE WE UES:
+         [ .sidebar-input > input] --> there > means inside input .
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
