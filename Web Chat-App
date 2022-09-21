@@ -54,7 +54,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                           </form>
 
 
-      #2-->
+      #2-->SIGN IN AND ADDING FIREBASE TO IT
                    
 ---------------------------------------------Login page----------------------------------------------------------------------------------------------------------
 *make changes in counterslice.js and rename counterslice.js to userslice.js
@@ -66,4 +66,4 @@ WEB CHAT APP USING REACT.JS AND REDUX.
            --PASTE GOOGLE AUTHANTICATION CODE COPIES FROM FIREBASE INTO FIREBSE.JS. then import it form firebase
            
            
-            1:43min
+            1:47min
