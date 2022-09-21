@@ -11,7 +11,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
      *USE REACT SNIPET USING(rfce) YOU HAVE TO INSTALL EXTENSION FOR THAT.
      *INSTALL MATERIAL UI AND THEN MATERIAL ICON FROM WEBSITE.
     
-   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   ------------------------------------------------------------STRUCTURE-----------------------------------------------------------------------------------------------------------
        
        *STEPS OF CREATING APP SECTION:
               1--created sidebar and chat part of js with their css.And then imported them in app.js.
@@ -19,26 +19,40 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                        --sidebar_header
                        --sidebar_chats(no of user or group)
               3--CHAT PART:-
-
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                        --charpart-header
+                        --chatpart-message
+                        --chatpart-input
+--------------------------------------------------------------CSS AND HTML---------------------------------------------------------------------------------------------------------
 *TO MAKE ICON A BUTTON WE JUST DO THIS:- put particular icon between following tags
    <IconButton>
           <searchicon>
    </IconButton>
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   *IF THERE IF INPUT DIV AND IT HAD CLASS CALL "SIDEBAR-INPUT" AND IF WE WANT TO MAKE CSS CHANGE TO INNER OF INPUT THE WE UES:
          [ .sidebar-input > input] --> there > means inside input .
          
    * IF SMALL IS CLASS/DIV  INSIDE SIDEBARCHAT AND WE WANT TO MODIFY CSS OF SMALL THEN  WE WILL USE THIS :-
                     [ SidebarChat_info > small  ]
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 *OVERFLOW ---it is scrolling function in css
 
+----------------------------------------------------------------FUNCTION IN RECT FOR DIFFRENT WORK-------------------------------------------------------------------------------
+     #1--> BUTTON AND INPUT   
+              *FUNCTION
+                        const[Input ,setInput] =useState("");//to keep track of input
+                         const sendMessage=(e)=>{
+                         e.preventDefault(); //so that after refresh its not  gone
+
+                         setInput("");  //so that after sending messagge the input gets erase so that we can write out next message
+              *PLACE TO BE IMPLEMENTED THIS FUNCTON
+                         <form action="">
+                          <input placeholder="Type Message"  
+                          onChange={e=>setInput(e.target.value)} //on change what we type it get change in input
+                          value={Input}
+                          type="text" />
+                          <button onClick={sendMessage}>
+                          send message</button>
+                          </form>
 
 
-
-
-
-
-                        1HR 6 MIN
+      #2-->
+                   
