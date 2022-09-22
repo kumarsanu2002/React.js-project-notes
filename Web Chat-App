@@ -22,6 +22,8 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                         --charpart-header
                         --chatpart-message
                         --chatpart-input
+              4--USERSLICE.JS ,CAHTSLICE {this is redux)
+                    --then import that in store.js.
 --------------------------------------------------------------CSS AND HTML---------------------------------------------------------------------------------------------------------
 *TO MAKE ICON A BUTTON WE JUST DO THIS:- put particular icon between following tags
    <IconButton>
