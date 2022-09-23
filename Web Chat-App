@@ -57,8 +57,52 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                           </form>
 
 
-      #2-->SIGN IN AND ADDING FIREBASE TO IT
-                   
+      #2-->LOGIN WITH FIREBASE (LOGIN.JS)
+      
+                           const signIn = e => {
+                            e.preventDefault();
+                            //   before this enable the authentication in your firebase and select the google //method
+                            //import auth and provider
+                            // signin with the auth protocol //This will update the authUser and in App.js will listen to
+                            // whenever the user changes
+                            auth.signInWithPopup(provider).catch(err => alert(err.message));
+                          };
+                *PLACE TO BE IMPLEMENTED THIS FUNCTON
+                               <Button type="submit" onClick={signIn}>
+                                       Sign in With Google
+                                </Button>
+                                      
+                                      
+        #3-->APP.JS 
+              
+                   const user = useSelector(selectUser);//this is to select user
+                    const dispatch = useDispatch(); //it is tool to use logout and login fuction
+                    useEffect(() => {
+                      auth.onAuthStateChanged(authUser => {
+                        if (authUser) {
+                          //user if login
+                          dispatch(
+                            login({ //imported from usesilce
+                              uid: authUser.uid,
+                              photo: authUser.photoURL,     //all this form google authentication
+                              email: authUser.email,
+                              displayName: authUser.displayName
+                            })
+                          );
+                        } else {
+                          //user is loged out
+                          dispatch(logout());
+                        }
+                      });
+                    }, [dispatch]);
+
+
+                    return <div className="app">{user ? <Imessage /> : <Login />}</div>;
+      //import{useselector ,usedispatch} from redux
+      //import{login,logout,selectuser} from userslice
+      //import auth from firebase
+            #4-->       
+                    
 ---------------------------------------------Login page----------------------------------------------------------------------------------------------------------
 *make changes in counterslice.js and rename counterslice.js to userslice.js
        TO UNDERSTAND REDUX WITH WHICH WE ARE MAKING LOGIN PAGE
@@ -156,7 +200,9 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                                 }
                               });
 
-                      
+----------------------------------------------------------FIREBASE--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                            JUST COPY CODE FROM FIREBASE WEBSITE.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                                                                
                                                                
                                                                
