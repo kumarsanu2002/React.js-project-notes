@@ -1,1 +1,21 @@
-
+REDUX:---->Javascript library for managing and centerlizing application state.
+      
+      *  <APP /> --------><HOME /> ------><POST />
+             =here if there if any in app then we can access it in home and post but if there is any value in post then we cant access it in app or home.
+             =so in this case we will use redux through which we can acess all value wther it connect to each other or not.
+         
+      #TERMONOLOGY RELATED TO REDUX:-
+             1->STORE= It is place where all data/variable/component wiill be stored.eg <APP/>,<CHAT/>etc.
+             2->REDUCER = It is a function through which we can change value of state.In easy way we can say that all implementation or activity will be performed using this.
+                        =syntax:-onst reducer = (state, action) => { }
+                        =eg. if we want to cange value of C=10 to C=30 then it will be done using reducer.
+             3->ACTION:It method to trigger reducer.
+             4->STATE
+             
+        *dispatch() is the method used to dispatch actions and trigger state changes to the store.     
+        *we can pass multiple reducer inside 1 reducer.
+        *after assigning reducer in store.js userslice then if we want to implement it on <APP/>  then,
+                                       <Provider store={store} >   //store where reducer are stored.and import provider
+                                        <APP />
+                                        </Provider>
+                         
