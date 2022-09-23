@@ -11,7 +11,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
      *USE REACT SNIPET USING(rfce) YOU HAVE TO INSTALL EXTENSION FOR THAT.
      *INSTALL MATERIAL UI AND THEN MATERIAL ICON FROM WEBSITE.
     
-   ------------------------------------------------------------STRUCTURE-----------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------STRUCTURE-----------------------------------------------------------------------------------------------------------
     #USERSLICE-->STORE.JS-->FIREBASE-->LOGIN-->APP.JS(this is structure to implement/learn react app.
     
        *STEPS OF CREATING APP SECTION:
@@ -70,3 +70,111 @@ WEB CHAT APP USING REACT.JS AND REDUX.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
           #ONSNAPSHOT--it to get real time information from differnt fuction
           #useState([]) --it if array in usesate
+-------------------------------------------------USER SLICE AND CAHT SLICE AND STORE.JS [REDUX]-----------------------------------------------------------------------------------------
+
+                     #NOTES=Userslice is for authanticate user or to help in login for particular users
+                            Chatslice is same as user slice but for chat and little bit different/
+                     #IMPORTANT CALL:-
+                               1->selectUser
+                               2->selectId
+                               3->selectName
+
+                          
+                          
+                     #CODE-USERSLICE:----
+                    [ 
+                    
+                    
+                         import { createSlice } from "@reduxjs/toolkit";
+
+                          export const userSlice = createSlice({
+                            name: "user",
+                            initialState: {         //assigning initial value
+                              user: null         //initially during login there is no user and in login we use only user information so ther is no other information user but in chatreducer we need to getther other information to such as name,id,message,
+                            },
+                            reducers: {   //here in reducer we will use to function login and logout because this is what we need to login.
+                              login: (state, action) => {
+                                state.user = action.payload;
+                              },
+                              logout: state => {
+                                state.user = null;
+                              }
+                            }
+                          });
+                          
+                          export const { logout, login } = userSlice.actions;  //exporting that fuction what we need to login
+                          
+                          export const selectUser = state => state.user.user;    //exporting  selectUser function which we will use in login to fach user 
+                          
+                          export default userSlice.reducer;
+
+   
+
+
+                                                                      ]
+
+
+                       #CODE-CHATSLICE:-
+                      
+                      [
+                         import { createSlice } from "@reduxjs/toolkit";
+                         
+                         export const chatSlice = createSlice({
+                           name: "name",
+                           initialState: {
+                             chatId: null,
+                             chatName: null
+                           },
+                           reducers: {
+                             setChat: (state, action) => {
+                               state.chatId = action.payload.chatId;
+                               state.chatName = action.payload.chatName;
+                             }
+                           }
+                         });
+                         
+                         export const { setChat } = chatSlice.actions;
+                         
+                         export const selectChatId = state => state.chat.chatId;   //here we are exporting chat id wich we will use in to connect sidebarchat to link chatbar and to fatch user with their chatmessage
+                         export const selectChatName = state => state.chat.chatName;
+                         
+                         export default chatSlice.reducer;
+
+
+                                                               ]
+                                   
+                                   
+                    #STORE.JS:-importing reducer from both userslice and chatslice
+                           
+                           import { configureStore } from "@reduxjs/toolkit";
+                              import userReducer from "./userSlice";
+                              import chatReducer from "./chatSlice";
+                              export default configureStore({
+                                reducer: {                        ///assigning reducre of both chat and user
+                                  user: userReducer,
+                                  chat: chatReducer
+                                }
+                              });
+
+                      
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+
+            
