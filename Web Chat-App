@@ -12,7 +12,8 @@ WEB CHAT APP USING REACT.JS AND REDUX.
      *INSTALL MATERIAL UI AND THEN MATERIAL ICON FROM WEBSITE.
     
    ------------------------------------------------------------STRUCTURE-----------------------------------------------------------------------------------------------------------
-       
+    #USERSLICE-->STORE.JS-->FIREBASE-->LOGIN-->APP.JS(this is structure to implement/learn react app.
+    
        *STEPS OF CREATING APP SECTION:
               1--created sidebar and chat part of js with their css.And then imported them in app.js.
               2-- SIDEBAR:-
