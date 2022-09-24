@@ -232,7 +232,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                                    <div className="sidebar__input">
                                      <SearchIcon />
                                      <input
-                                       value={search}
+                                       value={search}  //from above :-const[search,setsearch]
                                        onChange={e => setSearch(e.target.value)}
                                        type="text"
                                        placeholder="Search"
