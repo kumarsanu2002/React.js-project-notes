@@ -37,7 +37,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
    * IF SMALL IS CLASS/DIV  INSIDE SIDEBARCHAT AND WE WANT TO MODIFY CSS OF SMALL THEN  WE WILL USE THIS :-
                     [ SidebarChat_info > small  ]
 *OVERFLOW ---it is scrolling function in css
-
+*  <SwipeableDrawer>   </SwipeableDrawer> -->it is tag in which we will that page that will be shown dropdown or when out screen will be minimzed.
 ----------------------------------------------------------------FUNCTION IN RECT FOR DIFFRENT WORK-------------------------------------------------------------------------------
      #1--> BUTTON AND INPUT   
               *FUNCTION
@@ -116,8 +116,8 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                          {matches ? (   //when match will be ture then it will open in mobile version elese if it doesnt matches then simply sidebar and chatbar will be shown
                            <SwipeableDrawer       //this is basically dropdown when our app will in small size then it will be used as drop down fuction
                              className="Imessage__swiper"
-                             anchor="left"
-                             open={open}
+                             anchor="left"    //direction from which drop down will happen
+                             open={open}       //it will display wheter it is open or not
                              onClose={() => setOpen(false)}
                              onOpen={() => setOpen(true)}
                            >
@@ -129,7 +129,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                                 {/*when caht part will open then setopen function will be assign ture */}
                          <Chat handleOpen={() => setOpen(true)} />    //we will no put <chat /> in drop down because we dont want chat to drop down
                        </div>
-                    
+                    //import theme ,mediaqury,swipabledrawer
                                     ]
 ---------------------------------------------Login page----------------------------------------------------------------------------------------------------------
 *make changes in counterslice.js and rename counterslice.js to userslice.js
@@ -142,6 +142,9 @@ WEB CHAT APP USING REACT.JS AND REDUX.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
           #ONSNAPSHOT--it to get real time information from differnt fuction
           #useState([]) --it if array in usesate
+          #onOpen()
+          #onClose()
+          #handleOpen()
 -------------------------------------------------USER SLICE AND CAHT SLICE AND STORE.JS [REDUX]-----------------------------------------------------------------------------------------
 
                      #NOTES=Userslice is for authanticate user or to help in login for particular users
@@ -229,9 +232,20 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                               });
 
 ----------------------------------------------------------FIREBASE--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                            JUST COPY CODE FROM FIREBASE WEBSITE.
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                                               
+                                          
+                                          
+                                          JUST COPY CODE FROM FIREBASE WEBSITE.
+                                            
+                                            
+----------------------------------------------------------SUMMARY OF THIS PROJECT--------------------------------------------------------------------------------------------------------------------------
+    -->  Set redux component (userslice,chatslice,store.js) after that set firebase with google auth and firebase storage from firebase webste.
+    -->  After that make login page with firebase auth.
+    -->  Now go to App.js make function to  login and logout and gether info form google of consumer like avtart photo etc,now check whether user is already signup or not
+           if not then show them login page else show then direct <Imessage /> page that into our app.
+    -->Now in <Imessage /> page we will set a property to see screen size ,according to that we will make drop down in which we will show sidebar and chat part will not be included in that
+         In this page we wil connect out sidebar and chat part.
+    -->Sidebar   
+        
                                                                
                                                                
                                                                
