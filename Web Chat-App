@@ -12,7 +12,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
      *INSTALL MATERIAL UI AND THEN MATERIAL ICON FROM WEBSITE.
     
 ----------------------------------------------------------------------STRUCTURE-----------------------------------------------------------------------------------------------------------
-    #USERSLICE-->STORE.JS-->FIREBASE-->LOGIN-->APP.JS(this is structure to implement/learn react app.
+    #USERSLICE-->STORE.JS-->FIREBASE-->LOGIN-->APP.JS -->Imessage(it contain sidebar and chat ,it is page appear after login)--->sidebar--->chat
     
        *STEPS OF CREATING APP SECTION:
               1--created sidebar and chat part of js with their css.And then imported them in app.js.
@@ -101,8 +101,36 @@ WEB CHAT APP USING REACT.JS AND REDUX.
       //import{useselector ,usedispatch} from redux
       //import{login,logout,selectuser} from userslice
       //import auth from firebase
-            #4-->       
+      
+            #4-->Imessage(it contain sidebar and chat part) 
+            
+                 [
+                      const Imessage = () => {
+                      
+                      const theme = useTheme(); //for theme
+                      const matches = useMediaQuery(theme.breakpoints.down("xs")); //to set point after which it will be act like drop down button.see it documentatio no need to learn just see it.
+                      const [open, setOpen] = useState(true); ///function to change state
+                      return (
+                       <div className="Imessage">
+                        {/*matches=it is a point after which chat app change design */}
+                         {matches ? (   //when match will be ture then it will open in mobile version elese if it doesnt matches then simply sidebar and chatbar will be shown
+                           <SwipeableDrawer       //this is basically dropdown when our app will in small size then it will be used as drop down fuction
+                             className="Imessage__swiper"
+                             anchor="left"
+                             open={open}
+                             onClose={() => setOpen(false)}
+                             onOpen={() => setOpen(true)}
+                           >
+                             <Sidebar />  //here sidebar is in <SwiperableDrawer> because in will be in drop down fuction
+                           </SwipeableDrawer>
+                         ) : (
+                           <Sidebar />     //sidebar will be shown here
+                         )}
+                                {/*when caht part will open then setopen function will be assign ture */}
+                         <Chat handleOpen={() => setOpen(true)} />    //we will no put <chat /> in drop down because we dont want chat to drop down
+                       </div>
                     
+                                    ]
 ---------------------------------------------Login page----------------------------------------------------------------------------------------------------------
 *make changes in counterslice.js and rename counterslice.js to userslice.js
        TO UNDERSTAND REDUX WITH WHICH WE ARE MAKING LOGIN PAGE
