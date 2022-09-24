@@ -279,7 +279,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
 *CREATE NEW FILE NAME FIREBASE AND THEN INSTLALL FIREBASE USING TERMINAL IN THAT APP
            --PASTE GOOGLE AUTHANTICATION CODE COPIES FROM FIREBASE INTO FIREBSE.JS. then import it form firebase
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-          #ONSNAPSHOT--it to get real time information from differnt fuction
+          #ONSNAPSHOT--it to get real time update/information with cloud storage
           #useState([]) --it if array in usesate
           #onOpen()
           #onClose()
