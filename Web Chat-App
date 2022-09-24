@@ -149,9 +149,9 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                                    //main function AND RETURN FUNCTION
                            const Sidebar = () => {
                              const user = useSelector(selectUser); //to select user
-                             const [chat, setChat] = useState([]);     
+                             const [chat, setChat] = useState([]);     //to store chat in array
                              const [open, setOpen] = useState(false);      //that particular group is opwn or not
-                             const [chatName, setChatName] = useState("");  //to find last message
+                             const [chatName, setChatName] = useState("");  //to assigh group name
                              const [search, setSearch] = useState("");     //for searching channel
                              const handleOpen = () => { //when that group will be closed  then setopen will assign true
                                setOpen(true);
@@ -172,15 +172,18 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                                  )
                                );
                              }, []);
+             //going to database find chats then add a group/chatname and then handleclose for this particulr group
                              const addChannel = () => {        //adding groups
                                if (chatName) {
                                  db.collection("chats").add({
-                                   chatName: chatName
+                                   chatName: chatName        //chatname from what we write in pop up
+                                                             //chatName especially becaue  const [chatName, setChatName] = useState(""); this is assign above to store group name
                                  });
-                                 setChatName("");
+                                 setChatName(""); //so for next time addchannel input will be empty
                                  handleClose();
                                }
                              };
+                             //this is for last message
                              const filteredChats = chat.filter(chat => {
                                return chat.data.chatName.includes(search.toLowerCase());
                              });
@@ -191,20 +194,20 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                            
                                           {/*IT IS TO MAKE ADD CHANNEL  BUTTON DIAGONALY AND THERIR PROPERTY */}
                            
-                           
+                                 //this is for adding channel so thats why there is no group part there when we click on add group then there will new group will add else there will noting will be shown
                                  <Modal    //provides a solid foundation for creating dialogs, popovers, lightboxes, or whatever else.
                                    aria-labelledby="transition-modal-title"
                                    aria-describedby="transition-modal-description"
                                    open={open}
-                                   onClose={handleClose}
+                                   onClose={handleClose}      //handle is prebuild fuction inside it there is setopen functon.
                                    className="sidebar__addChatModal"
                                  >
                                    <Fade in={open}>          {/*Fade is a animation tool of material ui , basically one popup will occure to add channel*/}  
-                                     <div className="sidebar__addChatModalContainer">
+                                     <div className="sidebar__addChatModalContainer"> //it is pop 
                                        <h2>Add Channel</h2>
                                        <TextField    //writing chat name in input
-                                         value={chatName}
-                                         onChange={e => setChatName(e.target.value)} 
+                                         value={chatName} //channel name
+                                         onChange={e => setChatName(e.target.value)} //channel name will be direct from input we type
                                          id="outlined-basic"
                                          label="Enter Channel Name"
                                          variant="outlined"
