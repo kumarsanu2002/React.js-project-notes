@@ -131,6 +131,142 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                        </div>
                     //import theme ,mediaqury,swipabledrawer
                                     ]
+                                    
+                                    
+                                    
+                   #5-SIDEBAR
+                           
+                             //TOOLTIP FUNCTION
+                           const LightTooltip = withStyles(theme => ({ //it show anu information or message when user hover over particular elemetn
+                             tooltip: {
+                               backgroundColor: theme.palette.common.white,
+                               color: "rgba(0, 0, 0, 0.87)",
+                               boxShadow: theme.shadows[1],
+                               fontSize: 11
+                             }
+                           }))(Tooltip);
+                           
+                                   //main function AND RETURN FUNCTION
+                           const Sidebar = () => {
+                             const user = useSelector(selectUser); //to select user
+                             const [chat, setChat] = useState([]);     
+                             const [open, setOpen] = useState(false);      //that particular group is opwn or not
+                             const [chatName, setChatName] = useState("");  //to find last message
+                             const [search, setSearch] = useState("");     //for searching channel
+                             const handleOpen = () => { //when that group will be closed  then setopen will assign true
+                               setOpen(true);
+                             };
+                           
+                             const handleClose = () => {
+                               setOpen(false);
+                             };
+                             useEffect(() => { //collect data from data base of id
+                               db.collection("chats").onSnapshot(snapshot =>
+                                 setChat(
+                                   snapshot.docs.map(doc => {
+                                     return {
+                                       id: doc.id,
+                                       data: doc.data()
+                                     };
+                                   })
+                                 )
+                               );
+                             }, []);
+                             const addChannel = () => {        //adding groups
+                               if (chatName) {
+                                 db.collection("chats").add({
+                                   chatName: chatName
+                                 });
+                                 setChatName("");
+                                 handleClose();
+                               }
+                             };
+                             const filteredChats = chat.filter(chat => {
+                               return chat.data.chatName.includes(search.toLowerCase());
+                             });
+                           
+                           
+                             return (
+                               <div className="sidebar">
+                           
+                                          {/*IT IS TO MAKE ADD CHANNEL  BUTTON DIAGONALY AND THERIR PROPERTY */}
+                           
+                           
+                                 <Modal    //provides a solid foundation for creating dialogs, popovers, lightboxes, or whatever else.
+                                   aria-labelledby="transition-modal-title"
+                                   aria-describedby="transition-modal-description"
+                                   open={open}
+                                   onClose={handleClose}
+                                   className="sidebar__addChatModal"
+                                 >
+                                   <Fade in={open}>          {/*Fade is a animation tool of material ui , basically one popup will occure to add channel*/}  
+                                     <div className="sidebar__addChatModalContainer">
+                                       <h2>Add Channel</h2>
+                                       <TextField    //writing chat name in input
+                                         value={chatName}
+                                         onChange={e => setChatName(e.target.value)} 
+                                         id="outlined-basic"
+                                         label="Enter Channel Name"
+                                         variant="outlined"
+                                         margin="dense"
+                                       />
+                                       <Button onClick={addChannel} className="sidebar__addChannelButton">
+                                         Add Channel
+                                       </Button>
+                                     </div>
+                                   </Fade>
+                                 </Modal>      
+                           
+                                       {/*SIDEBAR HEADER */}
+                           
+                                 <div className="sidebar__header">
+                                   <LightTooltip title="Logout">   {/*when we hover on avtar then logout will be occure */}
+                                     <Avatar
+                                       onClick={() => auth.signOut()}          //*signout the user so the listener in app.js will
+                                       //dispatch the logout action
+                                       src={user.photo}
+                                       className="sidebar__avatar"
+                                     />
+                                   </LightTooltip>
+                           
+                                   <div className="sidebar__input">
+                                     <SearchIcon />
+                                     <input
+                                       value={search}
+                                       onChange={e => setSearch(e.target.value)}
+                                       type="text"
+                                       placeholder="Search"
+                                     />
+                                   </div>
+                                 </div>
+                           
+                                       {/*sign and add chat button */}
+                                 <div className="sidebar__actions">
+                                   <Button onClick={() => auth.signOut()}>SignOut</Button>
+                                   <Button onClick={handleOpen}>Add Chat</Button>
+                                 </div>
+                                         {/*last message */}
+                                 <div className="sidebar__chats">
+                                   {filteredChats.map(({ id, data: { chatName } }) => {
+                                     return <SidebarChat key={id} id={id} chatName={chatName} />;
+                                   })}
+                                 </div>
+                               </div>
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                                               
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
 ---------------------------------------------Login page----------------------------------------------------------------------------------------------------------
 *make changes in counterslice.js and rename counterslice.js to userslice.js
        TO UNDERSTAND REDUX WITH WHICH WE ARE MAKING LOGIN PAGE
