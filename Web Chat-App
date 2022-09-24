@@ -161,7 +161,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                                setOpen(false);
                              };
                              useEffect(() => { //collect data from data base of id
-                               db.collection("chats").onSnapshot(snapshot =>
+                               db.collection("chats").onSnapshot(snapshot =>       //it will gether real time data form could storage using onsnapshot
                                  setChat(
                                    snapshot.docs.map(doc => {
                                      return {
