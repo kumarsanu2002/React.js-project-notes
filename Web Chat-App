@@ -12,7 +12,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
      *INSTALL MATERIAL UI AND THEN MATERIAL ICON FROM WEBSITE.
     
 ----------------------------------------------------------------------STRUCTURE-----------------------------------------------------------------------------------------------------------
-    #USERSLICE-->STORE.JS-->FIREBASE-->LOGIN-->APP.JS -->Imessage(it contain sidebar and chat ,it is page appear after login)--->sidebar--->chat
+    #USERSLICE-->STORE.JS-->FIREBASE-->LOGIN-->APP.JS -->Imessage(it contain sidebar and chat ,it is page appear after login)--->sidebar--->sidebarchat->chat-->message.
     
        *STEPS OF CREATING APP SECTION:
               1--created sidebar and chat part of js with their css.And then imported them in app.js.
@@ -186,7 +186,7 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                              //this is for last message
                              const filteredChats = chat.filter(chat => {
                                return chat.data.chatName.includes(search.toLowerCase());
-                             });
+                             });        
                            
                            
                              return (
@@ -246,13 +246,15 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                                        {/*sign and add chat button */}
                                  <div className="sidebar__actions">
                                    <Button onClick={() => auth.signOut()}>SignOut</Button>
-                                   <Button onClick={handleOpen}>Add Chat</Button>
+                                   <Button onClick={handleOpen}>Add Chat</Button>      //here only we are closing and open because its main function is above <modal> <fade /> </modal>
                                  </div>
                                          {/*last message */}
+                                         
+               //here we are finding specific group then we are returning their sidebatchat page
                                  <div className="sidebar__chats">
-                                   {filteredChats.map(({ id, data: { chatName } }) => {
-                                     return <SidebarChat key={id} id={id} chatName={chatName} />;
-                                   })}
+                                   {filteredChats.map(({ id, data: { chatName } }) => {    //fatching id and data from chatname   //chatname==group name
+                                     return <SidebarChat key={id} id={id} chatName={chatName} />;    //imported sidebarchat page
+                                   })}                    //here we are assigning particular <sidebarchat /> with id,chatname/group so that opening that group we get chat of that group
                                  </div>
                                </div>
                                                                
