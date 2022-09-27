@@ -260,14 +260,63 @@ WEB CHAT APP USING REACT.JS AND REDUX.
                                                                
                                                                
                                                                
-                                                               
-                                                               
-                                                               
-                                                               
-                                                               
-                                    
-                                    
-                                    
+                  #SIDEBAR-CHAT:-
+                               
+                     //main  fuction
+                     //here we need id and chatNme/group so that we can link it with out sidebar
+             const SidebarChat = ({ id, chatName }) => {
+               const dispatch = useDispatch();
+               //this is to store message that we send.all also collect all info like  photo
+               const [chatInfo, setChatInfo] = useState([]); //this is to show last message and to assign all data from firebase to particlar box.like-image
+               //ths is to show last message and use id so that last message of that particular will show .we will fatch info form db
+               useEffect(() => {
+                 db.collection("chats")
+                   .doc(id)
+                   .collection("messages")
+                   .orderBy("timestamp", "desc")
+                   .onSnapshot(snapshot =>
+                     setChatInfo(
+                       snapshot.docs.map(doc => {
+                         return doc.data();
+                       })
+                     )
+                   );
+               }, [id]);
+                //return call
+               return (
+                 <div
+                   className="sidebarChat"
+                   onClick={() => {          //on clicking dispach setchat with unique id and chatname
+                     dispatch(
+                       setChat({
+                         chatId: id,
+                         chatName: chatName
+                       })
+                     );
+                   }}
+                 >
+                   <Avatar src={chatInfo[0]?.photo} />    {/* we will get avtar image from chatinfo that is from firebase when they sign in . [0] means first person */}
+                   
+                           {/* LAST MESSAGE AND  TIME STAMP */}
+                   <div className="sidebarChat__info">
+                     <h3>{chatName}</h3>           {/*GROUP NAME */}
+                     <p>{chatInfo[0]?.message}</p>  {/*LAST SEND MESSAGE */}
+                     <small>           {/*TIME STAMP */}
+                       {chatInfo[0]?.timestamp          //WE CAN SEE TIME STAMP FORMATE ONLINE NO NEES TO REMEMBER JUST SEE
+                         ? timeago.format(
+                             new Date(chatInfo[0]?.timestamp?.toDate()).toLocaleString()
+                           )
+                         : ""}
+                     </small>
+                   </div>
+                 </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                 
+                                                 
+                                                 
                                     
                                     
                                     
