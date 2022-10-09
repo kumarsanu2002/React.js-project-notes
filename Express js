@@ -34,12 +34,30 @@
                                     
                                        res.sendFile(path.join(__dirname,'index.html'));                 //dirname is directory name
                                        //in this way we can create a static website using node and express
-                7--INSTALL NODMON. 
+                7--INSTALL --D NODMON. 
                 8--WE CAN ALSO SEND STAUS :-
                   res.status(500)     or   res.json({"sanu":19})
                 
                 
  ----------------------------------------------------------PUTTING STATICE FOLDER ON SERVER USING EXPRESS.JS-------------------------------------------------------------------------------------
- 
- 
- 
+  Just like a public folder in which we will put all file which will be served or shown to  client or people . eg-index.html , app.js etc..
+               *FOR THIS WE WILL USE : app.use() 
+                      app.use(express.static(path.join(__dirname ,public)))         //public is folder name
+                      
+                      34 min
+    
+    MIDDLEWARE:- const midleware=(res,next ,req)=>{       //next so that we can use another middleware
+            console.log(req)
+            next()
+    }
+      //below   app.use(express.static(path.join(__dirname ,public)))  
+      app.use(middleware);
+      
+    ---------------------------------------------------------WHAT IF WE WANT TO ADD SOME PARAMETER -------------------------------------------------------------
+       #
+       app.get('/HELLO', (req, res) => {
+                               res.send('hii this is')
+                               
+          *WE WANT TO ADD NAME PARAMETER THEN:---        
+             app.get('/HELLO/:name', (req, res) => {
+                               res.send('hii this is ' + res.params.name)
