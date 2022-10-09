@@ -35,6 +35,11 @@
                                        res.sendFile(path.join(__dirname,'index.html'));                 //dirname is directory name
                                        //in this way we can create a static website using node and express
                 7--INSTALL --D NODMON. 
+                     it is a tool which automatically terminate command line when we make any change ,no need to write ctrl+c ,node server.js every time.
+                          --npm i nodemon
+                          --nodemon server.js
+                     
+                     
                 8--WE CAN ALSO SEND STAUS :-
                   res.status(500)     or   res.json({"sanu":19})
                 
@@ -61,3 +66,9 @@
           *WE WANT TO ADD NAME PARAMETER THEN:---        
              app.get('/HELLO/:name', (req, res) => {
                                res.send('hii this is ' + res.params.name)
+      -------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                    app.get() ==== to fatch what to show
+                                    app.listen()====to host locally
+                                   app.post()===to post output
+      
+      
