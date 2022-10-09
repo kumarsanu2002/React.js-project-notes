@@ -1,4 +1,7 @@
-            #WITH THE HELP OF EXPRESS JS WE CAN MAKE COMPLETE WEBSITE EASILY .IT IS JAVASCRIPT.
+         
+  -----------------------------------------INTRODUCTION AND BASIC CONCEPT---------------------------------------------------------------------------------------------------------------------------       
+         
+         #WITH THE HELP OF EXPRESS JS WE CAN MAKE COMPLETE WEBSITE EASILY .IT IS JAVASCRIPT.
             #IT IS SERVER SIDE FRAME-WORK
             #IT IS WAY TO RUN JAVASCRIPT ON SERVER
             #IT SHOW PAGES ON HTTP SERVER.eg there is website name sanu and we have to show next page that is about section . [sanu/about]
@@ -26,4 +29,17 @@
                 5--install thunderclient , it is just like postman.Lightweight Rest API Client for VS Code
                 
                 
-                           12:35
+                6--IF WE WANT TO SEND HTML PAGE AS res.send then do following :-
+                                       const path =required('path');
+                                    
+                                       res.sendFile(path.join(__dirname,'index.html'));                 //dirname is directory name
+                                       //in this way we can create a static website using node and express
+                7--INSTALL NODMON. 
+                8--WE CAN ALSO SEND STAUS :-
+                  res.status(500)     or   res.json({"sanu":19})
+                
+                
+ ----------------------------------------------------------PUTTING STATICE FOLDER ON SERVER USING EXPRESS.JS-------------------------------------------------------------------------------------
+ 
+ 
+ 
