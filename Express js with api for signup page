@@ -67,3 +67,10 @@ app.post('/failure', function(req, res){
 app.listen(5000, function(){
     console.log('server is running on port 5000');
 })
+
+
+
+//FOR RETURN TO SING-UP PAGE IN HTML
+   <form class="" action="/failure" method="post">
+                    <button type="submit" name="button" class="btn btn-lg btn-warning">Try again</button>
+                </form>
