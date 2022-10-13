@@ -1,0 +1,64 @@
+<-------------------------------------------PASSING DATA FROM YOUR WEBPAGE TO YOUR SERVER------------------------------------------------------------------------------->
+                                                    
+                                                    /* APP.JS*/
+                                                     
+const express = require('express')
+const bodyParser = require('body-parser')
+
+   const app =express();
+   var Name=[];  //araray to store all todo list
+   app.set('view engine', 'ejs'); //it should be below const app and view if from view folder to store ejs template
+   app.use(bodyParser.urlencoded({ extended: true }))
+   app.get('/', (req, res) => {
+    /*
+    var today = new Date();
+    var option={
+         weekday:"long",
+         day:"numeric",
+         month:"long",
+    };
+    //var day = today.toLocaleDateString("en-US",option); //to show local time zone
+    */
+    res.render('list', {foo:Name}); //we are rendering array of list in wich we had pushed itemName
+         //if we want to render more than 1 items then {foo:itemNamw ,too:cars}
+  });
+
+  app.post("/", (req, res) => {
+    var itemName= req.body.Llist; //rt need to globally declear var itemName so that as we have render it above so that can fatch our data
+     Name.push(itemName); //here we are pushing all input list to out arry and then display it above res,render
+     res.redirect("/"); //redirecting to  above because we have render itemsNmae above
+   
+  });
+    app.listen(3000, () => {
+    console.log(`Example app listening on port`)
+             });
+                 
+                                               /* LIST.EJS*/
+                    
+ <body>
+
+   <ul>
+     <!-- through this we can make seperate list in array to store with writing foo[i] with indx i
+            <%  %> //this tag because we have used for loop or condm in ejs file 
+        -->
+    <%   for(var i=0 ; i<foo.length ; i++){ %>
+        <li> <%=foo[i]%></li>
+    <% } %>   
+     
+   </ul>
+
+   <form action="/" method="post">
+     <input  placeholder="todo-items" name="Llist"> //Llist ----to fatch input in app.post and the store in array
+     <button type="submit" name="button">OK</button>
+   </form>
+</body>
+</html>
+
+
+
+<-----------------------------------------------
+
+
+
+
+                     
