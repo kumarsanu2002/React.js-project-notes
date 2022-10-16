@@ -55,9 +55,18 @@ const bodyParser = require('body-parser')
 </html>
 
 
+#TO PASS DATA FROM YOUR REACT JS TO SERRVER  WE USE ROUTER:-
+ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
-
+        <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
 
 
 
